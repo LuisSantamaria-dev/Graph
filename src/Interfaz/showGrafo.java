@@ -3,8 +3,12 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package Interfaz;
-
+import org.graphstream.ui.view.Viewer;
 import EDD.Grafo_LA;
+import EDD.Simple_List;
+import org.graphstream.graph.implementations.SingleGraph;
+import org.graphstream.graph.Graph;
+import javax.swing.JFrame;
 
 /**
  *
@@ -35,6 +39,7 @@ public class showGrafo extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         volver = new javax.swing.JButton();
         exit = new javax.swing.JButton();
+        showGraph = new javax.swing.JButton();
 
         jButton1.setText("jButton1");
 
@@ -57,6 +62,14 @@ public class showGrafo extends javax.swing.JFrame {
             }
         });
         jPanel1.add(exit, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 0, -1, -1));
+
+        showGraph.setText("jButton2");
+        showGraph.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                showGraphActionPerformed(evt);
+            }
+        });
+        jPanel1.add(showGraph, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 120, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -83,6 +96,31 @@ public class showGrafo extends javax.swing.JFrame {
         // TODO add your handling code here:
         System.exit(0);
     }//GEN-LAST:event_exitActionPerformed
+
+    private void showGraphActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showGraphActionPerformed
+        // TODO add your handling code here:
+//        Simple_List nums = new Simple_List();
+//        Graph graph = new SingleGraph("Grafo ");
+//        Simple_List listaenlaces = (Lista) app.mostrarInterfaz();
+//        for (int x = 0; x < listaenlaces.size(); x++) {  //Reorres los vertices del grafo 
+//            int[] numeros = (int[]) listaenlaces.getValuePosition(x); // Trabajas los vertices del 0 al int para posteriormente asignar su valor reak
+//            if (nums.search(numeros[0]) != true) {
+//                graph.addNode(String.valueOf(numeros[0])).setAttribute("label", numeros[0]);  // Se crea el vertice en el programa
+//
+//                nums.addLast(numeros[0]);
+//            }
+//            if (nums.search(numeros[1]) != true) {
+//                graph.addNode(String.valueOf(numeros[1])).setAttribute("label", numeros[1]);
+//                nums.addLast(numeros[1]);
+//            }
+//            graph.addEdge(String.valueOf(numeros[0]) + " " + String.valueOf(numeros[1]), String.valueOf(numeros[1]), String.valueOf(numeros[0]));
+//        } //Se crea la relacion de los vertices
+//        Viewer viewer = graph.display(); //Clase para visualizar el grafo
+//        viewer.enableAutoLayout(); //Que se expanda en toda la pestaña 
+//        viewer.setCloseFramePolicy(Viewer.CloseFramePolicy.EXIT);
+//        viewer.setCloseFramePolicy(Viewer.CloseFramePolicy.CLOSE_VIEWER);
+    
+    }//GEN-LAST:event_showGraphActionPerformed
 
     /**
      * @param args the command line arguments
@@ -123,6 +161,7 @@ public class showGrafo extends javax.swing.JFrame {
     private javax.swing.JButton exit;
     private javax.swing.JButton jButton1;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JButton showGraph;
     private javax.swing.JButton volver;
     // End of variables declaration//GEN-END:variables
 }

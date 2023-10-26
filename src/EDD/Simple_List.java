@@ -51,7 +51,7 @@ public class Simple_List {
     public void show(){
         Nodo_List aux = getHead();
         while(aux != null){
-            System.out.print("[ " + aux.getElement() + " ]\n");
+            System.out.println( aux.getElement() );
             aux = aux.getPnext();
         }
     }
@@ -164,7 +164,7 @@ public class Simple_List {
         //funcion para eliminar un nstring de la lista
         public void delete(String name){
             Nodo_List aux = this.getHead();
-            while(aux.getPnext()!= null && aux.getPnext().getElement() != name){
+            while(aux.getPnext()!= null && !aux.getPnext().getElement().equals(name)){
                 aux = aux.getPnext();
             }
             
@@ -173,5 +173,14 @@ public class Simple_List {
             }
             
         }
+//        public void show(){
+//          Nodo_List aux = getHead();
+//            while(aux.getPnext() != null){
+//                System.out.println("Sirve");
+//                System.out.println(aux.getElement());
+//                aux = aux.getPnext();
+//            }
+        
+//        }
         
 }

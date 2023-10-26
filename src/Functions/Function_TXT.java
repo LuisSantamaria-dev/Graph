@@ -40,7 +40,7 @@ public class Function_TXT {
                             users.insertFinal(line);
                                 Nodo_List n= new Nodo_List(line);
                                 grafo.insertar(n);
-                                System.out.println(line);
+//                               System.out.println(line);
                                     
                         } else if (currentSection.equals("relaciones")) {
                             String[] arista = line.split(", ");
@@ -59,6 +59,8 @@ public class Function_TXT {
         } catch (IOException e) {
             System.err.println("Error al leer el archivo: " + e.getMessage());
         }
+        
+        grafo.show_Graph();
         
 
        

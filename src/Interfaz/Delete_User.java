@@ -48,6 +48,12 @@ public class Delete_User extends javax.swing.JFrame {
 
         jLabel2.setText("Nombre de usuario: ");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 120, -1, -1));
+
+        userName.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                userNameActionPerformed(evt);
+            }
+        });
         jPanel1.add(userName, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 114, 220, 30));
 
         exit.setText("x");
@@ -59,6 +65,11 @@ public class Delete_User extends javax.swing.JFrame {
         jPanel1.add(exit, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 0, -1, -1));
 
         eliminar1.setText("Eliminar");
+        eliminar1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                eliminar1ActionPerformed(evt);
+            }
+        });
         jPanel1.add(eliminar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 200, -1, -1));
 
         volver1.setText("Volver");
@@ -95,6 +106,16 @@ public class Delete_User extends javax.swing.JFrame {
         menu.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_volver1ActionPerformed
+
+    private void userNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userNameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_userNameActionPerformed
+
+    private void eliminar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminar1ActionPerformed
+        // TODO add your handling code here:
+        Delete_User.eliminar(userName.getText());
+        Delete_User.show_Graph();
+    }//GEN-LAST:event_eliminar1ActionPerformed
 
     /**
      * @param args the command line arguments

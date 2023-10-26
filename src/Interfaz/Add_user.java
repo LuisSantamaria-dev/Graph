@@ -48,8 +48,8 @@ public static Grafo_LA insertar = new Grafo_LA(2);
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 48)); // NOI18N
-        jLabel1.setText("Añadir usuario");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 20, -1, -1));
+        jLabel1.setText("Añadir nuevo usuario");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 30, 500, -1));
 
         jLabel2.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel2.setText("Añadir relacion: ");
@@ -131,8 +131,10 @@ public static Grafo_LA insertar = new Grafo_LA(2);
 
     private void addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addActionPerformed
         // TODO add your handling code here:
+        Nodo_List n= new Nodo_List(userName.getText());
+        insertar.insertar(n);
         insertar.insertar_arista(userName.getText(), relacion.getText());
-        insertar.imprimir_grafo();
+        insertar.show_Graph();
         
     }//GEN-LAST:event_addActionPerformed
 
