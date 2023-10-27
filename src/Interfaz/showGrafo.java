@@ -3,12 +3,40 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package Interfaz;
+
 import org.graphstream.ui.view.Viewer;
 import EDD.Grafo_LA;
 import EDD.Simple_List;
+import org.graphstream.graph.Graph;
+import org.graphstream.graph.implementations.SingleGraph;
+import org.graphstream.ui.view.Viewer;
 import org.graphstream.graph.implementations.SingleGraph;
 import org.graphstream.graph.Graph;
+import java.awt.Component;
+import java.awt.Desktop;
+import java.awt.Dimension;
+import java.awt.Graphics2D;
+import java.awt.Panel;
+import java.awt.PopupMenu;
+import java.awt.event.WindowAdapter;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+import javax.imageio.ImageIO;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import org.graphstream.graph.Graph;
+import org.graphstream.graph.Node;
+import org.graphstream.graph.implementations.SingleGraph;
+import org.graphstream.ui.fx_viewer.FxViewer;
+import org.graphstream.ui.swing_viewer.DefaultView;
+import org.graphstream.ui.swing_viewer.ViewPanel;
+import org.graphstream.ui.view.GraphRenderer;
+import org.graphstream.ui.view.View;
+import org.graphstream.ui.view.Viewer;
+import org.graphstream.ui.view.ViewerListener;
+import org.graphstream.ui.view.ViewerPipe;
 
 /**
  *
@@ -16,9 +44,11 @@ import javax.swing.JFrame;
  */
 public class showGrafo extends javax.swing.JFrame {
 
-    public static Grafo_LA showGrafo; 
+    public static Grafo_LA showGrafo;
+
     /**
      * Creates new form showGrafo
+     *
      * @param <error>
      */
     public showGrafo(Grafo_LA grafo) {
@@ -99,27 +129,36 @@ public class showGrafo extends javax.swing.JFrame {
 
     private void showGraphActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showGraphActionPerformed
         // TODO add your handling code here:
-//        Simple_List nums = new Simple_List();
-//        Graph graph = new SingleGraph("Grafo ");
-//        Simple_List listaenlaces = (Lista) app.mostrarInterfaz();
-//        for (int x = 0; x < listaenlaces.size(); x++) {  //Reorres los vertices del grafo 
-//            int[] numeros = (int[]) listaenlaces.getValuePosition(x); // Trabajas los vertices del 0 al int para posteriormente asignar su valor reak
-//            if (nums.search(numeros[0]) != true) {
-//                graph.addNode(String.valueOf(numeros[0])).setAttribute("label", numeros[0]);  // Se crea el vertice en el programa
-//
-//                nums.addLast(numeros[0]);
-//            }
-//            if (nums.search(numeros[1]) != true) {
-//                graph.addNode(String.valueOf(numeros[1])).setAttribute("label", numeros[1]);
-//                nums.addLast(numeros[1]);
-//            }
-//            graph.addEdge(String.valueOf(numeros[0]) + " " + String.valueOf(numeros[1]), String.valueOf(numeros[1]), String.valueOf(numeros[0]));
-//        } //Se crea la relacion de los vertices
-//        Viewer viewer = graph.display(); //Clase para visualizar el grafo
-//        viewer.enableAutoLayout(); //Que se expanda en toda la pestaña 
-//        viewer.setCloseFramePolicy(Viewer.CloseFramePolicy.EXIT);
-//        viewer.setCloseFramePolicy(Viewer.CloseFramePolicy.CLOSE_VIEWER);
-    
+        Simple_List nums = new Simple_List();
+        Graph graph = new SingleGraph("Grafo ");
+        for (int i = 0; i < showGrafo.getSize(); i++) {
+            if (showGrafo.getUsers()[i] != null) {
+
+                graph.addNode(String.valueOf(showGrafo.getUsers()[i].getHead().getElement())).setAttribute("label", String.valueOf(showGrafo.getUsers()[i].getHead().getElement()));
+            }
+        }
+
+        for (int i = 0; i < showGrafo.getSize(); i++) {
+            if (showGrafo.getUsers()[i] != null) {
+
+                for (int x = 1; x < ((int) showGrafo.getUsers()[i].getSize()) + 1; x++) {
+                    if (x == 0) {
+                        continue;
+                    } else if (showGrafo.getUsers()[i].getElement(x) == null) {
+                        continue;
+                    } else {
+                        graph.addEdge(String.valueOf(showGrafo.getUsers()[i].getHead().getElement()) + "  " + String.valueOf(showGrafo.getUsers()[i].getElement(x)), String.valueOf(showGrafo.getUsers()[i].getHead().getElement()), String.valueOf(showGrafo.getUsers()[i].getElement(x)), true);
+                    }
+                }
+            }
+
+        }
+
+        Viewer viewer = graph.display();
+
+        viewer.enableAutoLayout(); //Que se expanda en toda la pestaña 
+        viewer.setCloseFramePolicy(Viewer.CloseFramePolicy.EXIT);
+        viewer.setCloseFramePolicy(Viewer.CloseFramePolicy.CLOSE_VIEWER);
     }//GEN-LAST:event_showGraphActionPerformed
 
     /**

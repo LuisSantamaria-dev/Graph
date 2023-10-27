@@ -119,5 +119,10 @@ public class Grafo_LA {
         }
 
     }
-
+public int getSize(){
+return tamano_grafo;
+}
+public Simple_List [] getUsers(){
+return usuarios;
+}
 }
