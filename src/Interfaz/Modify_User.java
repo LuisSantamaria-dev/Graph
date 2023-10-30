@@ -35,6 +35,7 @@ public class Modify_User extends javax.swing.JFrame {
         exit = new javax.swing.JButton();
         volver = new javax.swing.JButton();
         añadirUsuario = new javax.swing.JButton();
+        addRelation = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -50,7 +51,7 @@ public class Modify_User extends javax.swing.JFrame {
                 eliminarUsuarioActionPerformed(evt);
             }
         });
-        jPanel1.add(eliminarUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 100, 150, 50));
+        jPanel1.add(eliminarUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 120, 140, 30));
 
         exit.setText("x");
         exit.addActionListener(new java.awt.event.ActionListener() {
@@ -58,7 +59,7 @@ public class Modify_User extends javax.swing.JFrame {
                 exitActionPerformed(evt);
             }
         });
-        jPanel1.add(exit, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 0, 40, 40));
+        jPanel1.add(exit, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 10, 40, 40));
 
         volver.setText("Volver");
         volver.addActionListener(new java.awt.event.ActionListener() {
@@ -66,7 +67,7 @@ public class Modify_User extends javax.swing.JFrame {
                 volverActionPerformed(evt);
             }
         });
-        jPanel1.add(volver, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 220, 100, 50));
+        jPanel1.add(volver, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 240, 80, 30));
 
         añadirUsuario.setText("Añadir usuario");
         añadirUsuario.addActionListener(new java.awt.event.ActionListener() {
@@ -74,17 +75,25 @@ public class Modify_User extends javax.swing.JFrame {
                 añadirUsuarioActionPerformed(evt);
             }
         });
-        jPanel1.add(añadirUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 100, 150, 50));
+        jPanel1.add(añadirUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 80, 140, 30));
+
+        addRelation.setText("Añadir relacion");
+        addRelation.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addRelationActionPerformed(evt);
+            }
+        });
+        jPanel1.add(addRelation, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 160, 140, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 430, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 293, Short.MAX_VALUE)
         );
 
         pack();
@@ -113,6 +122,13 @@ public class Modify_User extends javax.swing.JFrame {
        this.dispose();
     }//GEN-LAST:event_añadirUsuarioActionPerformed
 
+    private void addRelationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addRelationActionPerformed
+        // TODO add your handling code here:
+        add_relation add = new add_relation(modificar);
+        add.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_addRelationActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -139,6 +155,7 @@ public class Modify_User extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(Modify_User.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -149,6 +166,7 @@ public class Modify_User extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton addRelation;
     private javax.swing.JButton añadirUsuario;
     private javax.swing.JButton eliminarUsuario;
     private javax.swing.JButton exit;

@@ -4,8 +4,6 @@
  */
 package EDD;
 
-import javax.swing.JOptionPane;
-
 /**
  *
  * 1-2-4
@@ -82,16 +80,12 @@ public class Grafo_LA {
 
     //funcion para buscar un usuario en el grafo
     public boolean buscarUser(String usuario) {
-        boolean encontrado = false;
         for (int i = 0; i < tamano_grafo; i++) {
             if (usuarios[i].getHead().getElement().equals(usuario)) {
-                encontrado = true;
-                break;
-            } else {
-                encontrado = false;
-            }
+                return true;
+            } 
         }
-        return encontrado;
+        return false;
     }
 
     //funcion para insertar una relacion
@@ -119,10 +113,29 @@ public class Grafo_LA {
         }
 
     }
-public int getSize(){
-return tamano_grafo;
-}
-public Simple_List [] getUsers(){
-return usuarios;
-}
+    
+    //validacion del user name proporcionado por el usuario
+    public boolean userNameValidation(String username) {
+        //Verificar que el nombre de usuario comience con @
+        if (!username.startsWith("@")) {
+            return false;
+        }
+
+        // Verificar que el nombre de usuario consista en letras minúsculas, números y @
+        for (char c : username.substring(1).toCharArray()) {
+            if (!(Character.isLowerCase(c) || Character.isDigit(c) || c == '@')) {
+                return false;
+            }
+        }
+        return true;
+    }
+    
+    
+       public int getSize() {
+        return tamano_grafo;
+    }
+
+    public Simple_List[] getUsers() {
+        return usuarios;
+    }
 }

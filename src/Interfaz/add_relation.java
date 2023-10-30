@@ -6,19 +6,22 @@ package Interfaz;
 
 import EDD.Grafo_LA;
 import EDD.Nodo_List;
+import Functions.Function_TXT;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author gabri
  */
-public class Add_user1 extends javax.swing.JFrame {
+public class add_relation extends javax.swing.JFrame {
 public static Grafo_LA insertar = new Grafo_LA(2);
+public static Function_TXT write = new Function_TXT();
 
 
     /**
      * Creates new form Add_user
      */
-    public Add_user1(Grafo_LA i) {
+    public add_relation(Grafo_LA i) {
         insertar = i;
         initComponents();
     }
@@ -39,9 +42,10 @@ public static Grafo_LA insertar = new Grafo_LA(2);
         userName = new javax.swing.JTextField();
         exit = new javax.swing.JButton();
         relacion = new javax.swing.JTextField();
-        add = new javax.swing.JButton();
         cancelar = new javax.swing.JButton();
         aceptar = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTextArea1 = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -49,22 +53,22 @@ public static Grafo_LA insertar = new Grafo_LA(2);
 
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 48)); // NOI18N
         jLabel1.setText("Añadir  relación");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 30, 440, -1));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 0, 440, -1));
 
         jLabel2.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        jLabel2.setText("Añadir relacion: ");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 170, -1, -1));
+        jLabel2.setText("Relacion a añadir:");
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 290, -1, -1));
 
         jLabel3.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel3.setText("Nombre de usuario: ");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 130, -1, -1));
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 200, -1, -1));
 
         userName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 userNameActionPerformed(evt);
             }
         });
-        jPanel1.add(userName, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 130, 270, -1));
+        jPanel1.add(userName, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 190, 270, 40));
 
         exit.setText("X");
         exit.addActionListener(new java.awt.event.ActionListener() {
@@ -73,15 +77,7 @@ public static Grafo_LA insertar = new Grafo_LA(2);
             }
         });
         jPanel1.add(exit, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 0, -1, -1));
-        jPanel1.add(relacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 170, 270, -1));
-
-        add.setText("Añadir");
-        add.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                addActionPerformed(evt);
-            }
-        });
-        jPanel1.add(add, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 170, -1, -1));
+        jPanel1.add(relacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 280, 270, 40));
 
         cancelar.setText("Cancelar");
         cancelar.addActionListener(new java.awt.event.ActionListener() {
@@ -89,7 +85,7 @@ public static Grafo_LA insertar = new Grafo_LA(2);
                 cancelarActionPerformed(evt);
             }
         });
-        jPanel1.add(cancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 350, -1, -1));
+        jPanel1.add(cancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 350, -1, -1));
 
         aceptar.setText("Aceptar");
         aceptar.addActionListener(new java.awt.event.ActionListener() {
@@ -97,7 +93,15 @@ public static Grafo_LA insertar = new Grafo_LA(2);
                 aceptarActionPerformed(evt);
             }
         });
-        jPanel1.add(aceptar, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 350, -1, -1));
+        jPanel1.add(aceptar, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 350, -1, -1));
+
+        jTextArea1.setColumns(20);
+        jTextArea1.setFont(new java.awt.Font("Dialog", 0, 16)); // NOI18N
+        jTextArea1.setRows(5);
+        jTextArea1.setText("   En esta seccion podras agregar nuevas relaciones a usuarios ya \n                      existentes dentro de nuestra base de datos");
+        jScrollPane1.setViewportView(jTextArea1);
+
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 60, 470, 110));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -129,21 +133,32 @@ public static Grafo_LA insertar = new Grafo_LA(2);
         this.dispose();
     }//GEN-LAST:event_cancelarActionPerformed
 
-    private void addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addActionPerformed
-        // TODO add your handling code here:
-        
-        insertar.insertar_arista(userName.getText(), relacion.getText());
-        insertar.show_Graph();
-        
-    }//GEN-LAST:event_addActionPerformed
-
     private void aceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aceptarActionPerformed
         // TODO add your handling code here:
 //        Nodo_List nodo = new Nodo_List(userName.getText());
 //        insertar.insertar(nodo);
-        Modify_User menu = new Modify_User(insertar);
-        menu.setVisible(true);
-        this.dispose();
+        if(insertar.userNameValidation( userName.getText()) && insertar.userNameValidation(relacion.getText())){
+            if(insertar.buscarUser(userName.getText()) ){
+                if(insertar.buscarUser(relacion.getText())){
+                    insertar.insertar_arista(userName.getText(), relacion.getText());
+                    JOptionPane.showMessageDialog(null, "La relacion se ha agregado con exito!!! ");
+                    write.writeTXT(userName.getText(), relacion.getText());
+                    Modify_User menu = new Modify_User(insertar);
+                    menu.setVisible(true);
+                    this.dispose();
+                }
+                else{
+                    JOptionPane.showMessageDialog(null, "El usuario " + relacion.getText() + " no ha sido encontrado ");
+                }
+            }else{
+                JOptionPane.showMessageDialog(null, "El usuario " + userName.getText() + " no ha sido encontrado");
+            }
+            
+        }
+        else{
+            JOptionPane.showMessageDialog(null, "El formato del nombre de usuario es incorrecto. \n Recuerde: '@pepe', '@juan'");
+        }
+        
     }//GEN-LAST:event_aceptarActionPerformed
 
     /**
@@ -163,34 +178,41 @@ public static Grafo_LA insertar = new Grafo_LA(2);
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Add_user1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(add_relation.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Add_user1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(add_relation.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Add_user1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(add_relation.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Add_user1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(add_relation.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Add_user1(insertar).setVisible(true);
+                new add_relation(insertar).setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton aceptar;
-    private javax.swing.JButton add;
     private javax.swing.JButton cancelar;
     private javax.swing.JButton exit;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextField relacion;
     private javax.swing.JTextField userName;
     // End of variables declaration//GEN-END:variables

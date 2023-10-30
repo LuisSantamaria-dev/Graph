@@ -70,6 +70,7 @@ public class showGrafo extends javax.swing.JFrame {
         volver = new javax.swing.JButton();
         exit = new javax.swing.JButton();
         showGraph = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
         jButton1.setText("jButton1");
 
@@ -83,7 +84,7 @@ public class showGrafo extends javax.swing.JFrame {
                 volverActionPerformed(evt);
             }
         });
-        jPanel1.add(volver, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 250, -1, -1));
+        jPanel1.add(volver, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 250, -1, -1));
 
         exit.setText("x");
         exit.addActionListener(new java.awt.event.ActionListener() {
@@ -91,21 +92,25 @@ public class showGrafo extends javax.swing.JFrame {
                 exitActionPerformed(evt);
             }
         });
-        jPanel1.add(exit, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 0, -1, -1));
+        jPanel1.add(exit, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 0, -1, -1));
 
-        showGraph.setText("jButton2");
+        showGraph.setText("Haga click para ver el grafo");
         showGraph.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 showGraphActionPerformed(evt);
             }
         });
-        jPanel1.add(showGraph, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 120, -1, -1));
+        jPanel1.add(showGraph, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 120, -1, 60));
+
+        jLabel1.setFont(new java.awt.Font("Dialog", 1, 48)); // NOI18N
+        jLabel1.setText("Mostrar Grafo");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 20, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 400, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -199,6 +204,7 @@ public class showGrafo extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton exit;
     private javax.swing.JButton jButton1;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JButton showGraph;
     private javax.swing.JButton volver;

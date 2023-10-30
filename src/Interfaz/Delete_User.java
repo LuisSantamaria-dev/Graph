@@ -5,6 +5,8 @@
 package Interfaz;
 
 import EDD.Grafo_LA;
+import Functions.Function_TXT;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -12,6 +14,7 @@ import EDD.Grafo_LA;
  */
 public class Delete_User extends javax.swing.JFrame {
     public static Grafo_LA Delete_User;
+    public static Function_TXT write = new Function_TXT();
     /**
      * Creates new form Delete_User
      * @param grafo
@@ -113,8 +116,24 @@ public class Delete_User extends javax.swing.JFrame {
 
     private void eliminar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminar1ActionPerformed
         // TODO add your handling code here:
-        Delete_User.eliminar(userName.getText());
-        Delete_User.show_Graph();
+        if(Delete_User.userNameValidation(userName.getText())){
+            if(Delete_User.buscarUser(userName.getText())){
+                Delete_User.eliminar(userName.getText());
+                JOptionPane.showMessageDialog(null, "El usuario ha sido eliminado con exito!!!");
+                //Delete_User.show_Graph();
+                write.writeAndDeleteTXT(userName.getText());
+                Modify_User menu = new Modify_User(Delete_User);
+                menu.setVisible(true);
+                this.dispose();
+            }
+            else{
+                JOptionPane.showMessageDialog(null, "El usuario " + userName.getText() + " no ha sido encontrado ");
+            }
+        }
+        else{
+            JOptionPane.showMessageDialog(null, "El formato del usuario es incorrecto. \n Recuerde: '@pepe' , @'juan' ");
+        }
+        
     }//GEN-LAST:event_eliminar1ActionPerformed
 
     /**
