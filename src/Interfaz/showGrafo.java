@@ -4,7 +4,39 @@
  */
 package Interfaz;
 
+import org.graphstream.ui.view.Viewer;
 import EDD.Grafo_LA;
+import EDD.Simple_List;
+import org.graphstream.graph.Graph;
+import org.graphstream.graph.implementations.SingleGraph;
+import org.graphstream.ui.view.Viewer;
+import org.graphstream.graph.implementations.SingleGraph;
+import org.graphstream.graph.Graph;
+import java.awt.Component;
+import java.awt.Desktop;
+import java.awt.Dimension;
+import java.awt.Graphics2D;
+import java.awt.Panel;
+import java.awt.PopupMenu;
+import java.awt.event.WindowAdapter;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+import javax.imageio.ImageIO;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import org.graphstream.graph.Graph;
+import org.graphstream.graph.Node;
+import org.graphstream.graph.implementations.SingleGraph;
+import org.graphstream.ui.fx_viewer.FxViewer;
+import org.graphstream.ui.swing_viewer.DefaultView;
+import org.graphstream.ui.swing_viewer.ViewPanel;
+import org.graphstream.ui.view.GraphRenderer;
+import org.graphstream.ui.view.View;
+import org.graphstream.ui.view.Viewer;
+import org.graphstream.ui.view.ViewerListener;
+import org.graphstream.ui.view.ViewerPipe;
 
 /**
  *
@@ -12,9 +44,11 @@ import EDD.Grafo_LA;
  */
 public class showGrafo extends javax.swing.JFrame {
 
-    public static Grafo_LA showGrafo; 
+    public static Grafo_LA showGrafo;
+
     /**
      * Creates new form showGrafo
+     *
      * @param <error>
      */
     public showGrafo(Grafo_LA grafo) {
@@ -35,6 +69,8 @@ public class showGrafo extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         volver = new javax.swing.JButton();
         exit = new javax.swing.JButton();
+        showGraph = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
         jButton1.setText("jButton1");
 
@@ -48,7 +84,7 @@ public class showGrafo extends javax.swing.JFrame {
                 volverActionPerformed(evt);
             }
         });
-        jPanel1.add(volver, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 250, -1, -1));
+        jPanel1.add(volver, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 250, -1, -1));
 
         exit.setText("x");
         exit.addActionListener(new java.awt.event.ActionListener() {
@@ -56,13 +92,25 @@ public class showGrafo extends javax.swing.JFrame {
                 exitActionPerformed(evt);
             }
         });
-        jPanel1.add(exit, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 0, -1, -1));
+        jPanel1.add(exit, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 0, -1, -1));
+
+        showGraph.setText("Haga click para ver el grafo");
+        showGraph.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                showGraphActionPerformed(evt);
+            }
+        });
+        jPanel1.add(showGraph, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 120, -1, 60));
+
+        jLabel1.setFont(new java.awt.Font("Dialog", 1, 48)); // NOI18N
+        jLabel1.setText("Mostrar Grafo");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 20, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 400, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -83,6 +131,40 @@ public class showGrafo extends javax.swing.JFrame {
         // TODO add your handling code here:
         System.exit(0);
     }//GEN-LAST:event_exitActionPerformed
+
+    private void showGraphActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showGraphActionPerformed
+        // TODO add your handling code here:
+        Simple_List nums = new Simple_List();
+        Graph graph = new SingleGraph("Grafo ");
+        for (int i = 0; i < showGrafo.getSize(); i++) {
+            if (showGrafo.getUsers()[i] != null) {
+
+                graph.addNode(String.valueOf(showGrafo.getUsers()[i].getHead().getElement())).setAttribute("label", String.valueOf(showGrafo.getUsers()[i].getHead().getElement()));
+            }
+        }
+
+        for (int i = 0; i < showGrafo.getSize(); i++) {
+            if (showGrafo.getUsers()[i] != null) {
+
+                for (int x = 1; x < ((int) showGrafo.getUsers()[i].getSize()) + 1; x++) {
+                    if (x == 0) {
+                        continue;
+                    } else if (showGrafo.getUsers()[i].getElement(x) == null) {
+                        continue;
+                    } else {
+                        graph.addEdge(String.valueOf(showGrafo.getUsers()[i].getHead().getElement()) + "  " + String.valueOf(showGrafo.getUsers()[i].getElement(x)), String.valueOf(showGrafo.getUsers()[i].getHead().getElement()), String.valueOf(showGrafo.getUsers()[i].getElement(x)), true);
+                    }
+                }
+            }
+
+        }
+
+        Viewer viewer = graph.display();
+
+        viewer.enableAutoLayout(); //Que se expanda en toda la pestaña 
+        viewer.setCloseFramePolicy(Viewer.CloseFramePolicy.EXIT);
+        viewer.setCloseFramePolicy(Viewer.CloseFramePolicy.CLOSE_VIEWER);
+    }//GEN-LAST:event_showGraphActionPerformed
 
     /**
      * @param args the command line arguments
@@ -122,7 +204,9 @@ public class showGrafo extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton exit;
     private javax.swing.JButton jButton1;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JButton showGraph;
     private javax.swing.JButton volver;
     // End of variables declaration//GEN-END:variables
 }

@@ -52,7 +52,7 @@ public class Menu extends javax.swing.JFrame {
                 mostrarComponentesActionPerformed(evt);
             }
         });
-        jPanel1.add(mostrarComponentes, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 210, -1, -1));
+        jPanel1.add(mostrarComponentes, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 220, 170, 60));
 
         exit.setText("x");
         exit.addActionListener(new java.awt.event.ActionListener() {
@@ -68,7 +68,7 @@ public class Menu extends javax.swing.JFrame {
                 mostrarGrafoActionPerformed(evt);
             }
         });
-        jPanel1.add(mostrarGrafo, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 150, -1, -1));
+        jPanel1.add(mostrarGrafo, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 150, 170, 60));
 
         modficraGrafo.setText("Modificar Grafo");
         modficraGrafo.addActionListener(new java.awt.event.ActionListener() {
@@ -76,7 +76,7 @@ public class Menu extends javax.swing.JFrame {
                 modficraGrafoActionPerformed(evt);
             }
         });
-        jPanel1.add(modficraGrafo, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 90, -1, -1));
+        jPanel1.add(modficraGrafo, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 80, 170, 60));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

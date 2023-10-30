@@ -5,6 +5,8 @@
 package Interfaz;
 
 import EDD.Grafo_LA;
+import Functions.Function_TXT;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -12,6 +14,7 @@ import EDD.Grafo_LA;
  */
 public class Delete_User extends javax.swing.JFrame {
     public static Grafo_LA Delete_User;
+    public static Function_TXT write = new Function_TXT();
     /**
      * Creates new form Delete_User
      * @param grafo
@@ -48,6 +51,12 @@ public class Delete_User extends javax.swing.JFrame {
 
         jLabel2.setText("Nombre de usuario: ");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 120, -1, -1));
+
+        userName.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                userNameActionPerformed(evt);
+            }
+        });
         jPanel1.add(userName, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 114, 220, 30));
 
         exit.setText("x");
@@ -59,6 +68,11 @@ public class Delete_User extends javax.swing.JFrame {
         jPanel1.add(exit, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 0, -1, -1));
 
         eliminar1.setText("Eliminar");
+        eliminar1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                eliminar1ActionPerformed(evt);
+            }
+        });
         jPanel1.add(eliminar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 200, -1, -1));
 
         volver1.setText("Volver");
@@ -95,6 +109,32 @@ public class Delete_User extends javax.swing.JFrame {
         menu.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_volver1ActionPerformed
+
+    private void userNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userNameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_userNameActionPerformed
+
+    private void eliminar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminar1ActionPerformed
+        // TODO add your handling code here:
+        if(Delete_User.userNameValidation(userName.getText())){
+            if(Delete_User.buscarUser(userName.getText())){
+                Delete_User.eliminar(userName.getText());
+                JOptionPane.showMessageDialog(null, "El usuario ha sido eliminado con exito!!!");
+                //Delete_User.show_Graph();
+                write.writeAndDeleteTXT(userName.getText());
+                Modify_User menu = new Modify_User(Delete_User);
+                menu.setVisible(true);
+                this.dispose();
+            }
+            else{
+                JOptionPane.showMessageDialog(null, "El usuario " + userName.getText() + " no ha sido encontrado ");
+            }
+        }
+        else{
+            JOptionPane.showMessageDialog(null, "El formato del usuario es incorrecto. \n Recuerde: '@pepe' , @'juan' ");
+        }
+        
+    }//GEN-LAST:event_eliminar1ActionPerformed
 
     /**
      * @param args the command line arguments
